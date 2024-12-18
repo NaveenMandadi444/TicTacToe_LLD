@@ -1,4 +1,3 @@
-package com.tictactoe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ public class Board {
         for (int i = 0; i < 3; i++) {
             List<Character> row = new ArrayList<>();
             for (int j = 0; j < 3; j++) {
-                row.add(' '); // Initialize with empty spaces
+                row.add(' '); 
             }
             board.add(row);
         }
@@ -37,15 +36,19 @@ public class Board {
         return false;
     }
 
+    public void clearMove(int row, int col) {
+        board.get(row).set(col, ' ');
+    }
+
     public boolean checkWin(char player) {
-        // Check rows and columns
+    
         for (int i = 0; i < 3; i++) {
             if ((board.get(i).get(0) == player && board.get(i).get(1) == player && board.get(i).get(2) == player) ||
                 (board.get(0).get(i) == player && board.get(1).get(i) == player && board.get(2).get(i) == player)) {
-                return true; // Win found
+                return true;
             }
         }
-        // Check diagonals
+       
         return (board.get(0).get(0) == player && board.get(1).get(1) == player && board.get(2).get(2) == player) ||
                (board.get(0).get(2) == player && board.get(1).get(1) == player && board.get(2).get(0) == player);
     }
@@ -54,10 +57,10 @@ public class Board {
         for (List<Character> row : board) {
             for (char cell : row) {
                 if (cell == ' ') {
-                    return false; // Found an empty cell
+                    return false; 
                 }
             }
         }
-        return true; // No empty cells found
+        return true; 
     }
 }
